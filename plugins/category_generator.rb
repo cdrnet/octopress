@@ -155,6 +155,20 @@ module Jekyll
         "#{categories[0...-1].join(', ')}, #{categories[-1]}"
       end
     end
+	
+	def category_list(categories)
+      categories = categories.sort!.map do |item|
+        "#{item}"
+      end
+      case categories.length
+      when 0
+        ""
+      when 1
+        categories[0].to_s
+      else
+        "#{categories[0...-1].join(', ')}, #{categories[-1]}"
+      end
+    end
 
     # Outputs the post.date as formatted html, with hooks for CSS styling.
     #

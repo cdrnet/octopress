@@ -78,6 +78,11 @@ module OctopressLiquidFilters
       $1+url+$3
     end
   end
+  
+  # RFC-822 compliant date (e.g. RSS2)
+  def date_to_rfc822(date)
+	date.strftime("%a, %d %b %Y %H:%M:%S %z")
+  end
 
   # Improved version of Liquid's truncate:
   # - Doesn't cut in the middle of a word.

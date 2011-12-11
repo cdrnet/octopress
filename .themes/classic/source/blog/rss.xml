@@ -1,0 +1,27 @@
+---
+layout: nil
+---
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+<channel>
+  <title>{{ site.title | xml_escape }}</title>
+  <link>{{ site.url }}</link>
+  <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
+  <copyright>{{ site.author | strip_html | xml_escape }}</copyright>
+  <generator>Octopress</generator>
+  <description><![CDATA[{{ site.subtitle | strip_html }}]]></description>
+  
+  {% for post in site.posts limit: 20 %}
+  <item>
+    <title><![CDATA[{{ post.title | cdata_escape }}]]></title>
+    <link>{{ site.url }}{{ post.url }}</link>
+    <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
+    <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
+    <category>{{ post.categories | category_list }}</category>
+    <description>
+      <![CDATA[{{ post.content | expand_urls: site.url | cdata_escape }}]]>
+    </description>
+  </item>
+  {% endfor %}
+</channel>
+</rss>
